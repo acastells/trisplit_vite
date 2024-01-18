@@ -3,12 +3,11 @@ import { Trisplit } from "@/vm/vm";
 export const getTrisplit = (id?: number): Trisplit | Trisplit[] | null => {
 	const trisplits_str = localStorage.getItem("trisplits");
 	if (!trisplits_str) {
-		return null;
+		return id ? null : [];
 	}
 
 	const trisplits_arr: Trisplit[] = JSON.parse(trisplits_str);
 	if (typeof id === "number") {
-		console.log("here")
 		const result = trisplits_arr.find((item) => item.id === id);
 		if (result) {
 			return result;
@@ -16,8 +15,32 @@ export const getTrisplit = (id?: number): Trisplit | Trisplit[] | null => {
 			return null;
 		}
 	} else {
-		console.log("here2", id)
 		return trisplits_arr;
+	}
+};
+
+export const getTrisplitsCount = (): number => {
+	const trisplits = getTrisplit();
+	if (trisplits) {
+		return (trisplits as Trisplit[]).length;
+	} else {
+		return 0;
+	}
+};
+
+export const removeTrisplit = (id: number) => {
+	const trisplits_str = localStorage.getItem("trisplits");
+
+	if (!trisplits_str) {
+		return;
+	}
+
+	const trisplits_arr: Trisplit[] = JSON.parse(trisplits_str);
+	const index = trisplits_arr.findIndex((item) => item.id === id);
+
+	if (index !== -1) {
+		trisplits_arr.splice(index, 1);
+		localStorage.setItem("trisplits", JSON.stringify(trisplits_arr));
 	}
 };
 
