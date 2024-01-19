@@ -4,6 +4,7 @@ import { DetailScene } from "../scenes/detail.scene";
 import { HomeScene } from "../scenes/home.scene";
 import { ListScene } from "../scenes/list.scene";
 import { switchRoutes } from "./routes";
+import { TrisplitContextProvider } from "../core/trisplitContext";
 
 export const AppRouter: React.FC = () => {
 	return (
@@ -12,7 +13,14 @@ export const AppRouter: React.FC = () => {
 				<Route path={switchRoutes.home} element={<HomeScene />} />
 				<Route path={switchRoutes.create} element={<CreateScene />} />
 				<Route path={switchRoutes.list} element={<ListScene />} />
-				<Route path={switchRoutes.detail} element={<DetailScene />} />
+				<Route
+					path={switchRoutes.detail}
+					element={
+						<TrisplitContextProvider>
+							<DetailScene />
+						</TrisplitContextProvider>
+					}
+				/>
 				<Route path="*" element={<div>404! not found!</div>} />
 			</Routes>
 		</BrowserRouter>
