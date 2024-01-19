@@ -70,11 +70,7 @@ export const CreateScene: React.FC = () => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{members.map((row) => (
-								<TableRow key={row.id}>
-									<TableCell>{row.name}</TableCell>
-								</TableRow>
-							))}
+
 							<TableRow>
 								<TableCell>
 									<Grid container flexDirection={"column"}>
@@ -95,6 +91,11 @@ export const CreateScene: React.FC = () => {
 									</Grid>
 								</TableCell>
 							</TableRow>
+							{members.map((row) => (
+								<TableRow key={row.id}>
+									<TableCell>{row.name}</TableCell>
+								</TableRow>
+							))}
 						</TableBody>
 					</Table>
 				</TableContainer>
