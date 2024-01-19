@@ -1,13 +1,13 @@
-import { Trisplit } from "../vm/vm";
 import { Grid } from "@mui/material";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTrisplit, saveTrisplit } from "../core/storage";
+import { getTrisplit } from "../core/storage";
+import { TrisplitContext } from "../core/trisplitContext";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { BalanceTable } from "../subcomponents/BalanceTable.component";
 import { ExpensesTable } from "../subcomponents/ExpensesTable.component";
 import { MembersTable } from "../subcomponents/MembersTable.component";
-import { TrisplitContext } from "../core/trisplitContext";
+import { Trisplit } from "../vm/vm";
 
 export const DetailScene: React.FC = () => {
 	const { id } = useParams();
@@ -23,12 +23,6 @@ export const DetailScene: React.FC = () => {
 		}
 	}, [id]);
 
-	React.useEffect(() => {
-		if (trisplit) {
-			saveTrisplit(trisplit);
-		}
-	}, [trisplit]);
-
 	return (
 			<LayoutToolbar>
 				{trisplit && (
@@ -38,7 +32,8 @@ export const DetailScene: React.FC = () => {
 							<i>{new Date(trisplit.dateCreated).toLocaleDateString()}</i>
 						</p>
 						<span>{trisplit.description.toString()}</span>
-						<p>{trisplit.members.toString()}</p>
+						<p>Members: {trisplit.members.map((member) => member.name).join(", ")}</p>
+						<p>Expenses: {trisplit.expenses.map((expense) => expense.amount).join(", ")}</p>
 
 						<ExpensesTable/>
 						<BalanceTable/>
