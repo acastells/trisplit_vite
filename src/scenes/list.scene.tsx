@@ -8,6 +8,7 @@ import {
 	Grid,
 	IconButton,
 	Table,
+	TableBody,
 	TableCell,
 	TableRow,
 } from "@mui/material";
@@ -73,21 +74,27 @@ export const ListScene: React.FC = () => {
 			<DeleteDialog />
 			<Grid container flexDirection="column" justifyContent={"center"} sx={{ p: 2 }}>
 				{trisplits?.map((item) => (
-					<Table>
-						<TableRow>
-							<TableCell>
-								<Button onClick={() => navigate("/" + item.id)}>{item.name}</Button>
-							</TableCell>
-							<TableCell>{new Date(item.dateCreated).toLocaleDateString()}</TableCell>
-							<TableCell>
-								{item.members.map((member) => member.name).join(", ")}
-							</TableCell>
-							<TableCell>
-								<IconButton onClick={() => handleDelete(item.id)} color="error">
-									<DeleteIcon />
-								</IconButton>
-							</TableCell>
-						</TableRow>
+					<Table key={item.id}>
+						<TableBody>
+							<TableRow>
+								<TableCell>
+									<Button onClick={() => navigate("/" + item.id)}>
+										{item.name}
+									</Button>
+								</TableCell>
+								<TableCell>
+									{new Date(item.dateCreated).toLocaleDateString()}
+								</TableCell>
+								<TableCell>
+									{item.members.map((member) => member.name).join(", ")}
+								</TableCell>
+								<TableCell>
+									<IconButton onClick={() => handleDelete(item.id)} color="error">
+										<DeleteIcon />
+									</IconButton>
+								</TableCell>
+							</TableRow>
+						</TableBody>
 					</Table>
 				))}
 				<Grid
