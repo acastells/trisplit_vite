@@ -42,8 +42,13 @@ export const DetailScene: React.FC = () => {
 					<span>{trisplit.description.toString()}</span>
 
 					<ExpensesTable />
-					<BalanceTable />
-					<MembersTable />
+
+					<Grid container flexDirection={"row"} spacing={2}>
+						<Grid item xs={8}><BalanceTable /></Grid>
+						<Grid item xs={4}><MembersTable /></Grid>
+					</Grid>
+					
+					
 				</Grid>
 			)}
 		</LayoutToolbar>

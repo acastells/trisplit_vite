@@ -3,6 +3,7 @@ import React from "react";
 import { TrisplitContext } from "../core/trisplitContext";
 import { calculateBalancedTransactions } from "../utils";
 import { Balance } from "@/vm/vm";
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 export const BalanceTable = () => {
 	const { trisplit } = React.useContext(TrisplitContext);
@@ -23,15 +24,11 @@ export const BalanceTable = () => {
 					<TableContainer component={Paper}>
 						<Table>
 							<TableBody>
-								<TableRow>
-									<TableCell></TableCell>
-									<TableCell>From</TableCell>
-									<TableCell>To</TableCell>
-								</TableRow>
 								{balance.map((entry, index) => (
 									<TableRow key={index}>
-										<TableCell>{entry.amount}</TableCell>
+										<TableCell>{entry.amount} €</TableCell>
 										<TableCell>{entry.from.name}</TableCell>
+										<TableCell><DoubleArrowIcon /></TableCell>
 										<TableCell>{entry.to.name}</TableCell>
 									</TableRow>
 								))}
