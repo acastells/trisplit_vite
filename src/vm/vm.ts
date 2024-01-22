@@ -18,3 +18,9 @@ export interface Expense {
 	whoPayed: Member,
 	toWhomPayed: Member[]
 }
+
+export interface Balance {
+	amount: number
+	from: Member
+	to: Member
+}

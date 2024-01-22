@@ -149,7 +149,7 @@ export const ExpensesTable = () => {
 								<TableCell>{expense.whoPayed.name}</TableCell>
 								<TableCell>
 									{expense.toWhomPayed.map((member) => (
-										<Chip label={member.name} sx={{ mr: 1 }} />
+										<Chip key={member.id} label={member.name} sx={{ mr: 1 }} />
 									))}
 								</TableCell>
 								<TableCell>

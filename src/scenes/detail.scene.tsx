@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { Grid } from "@mui/material";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTrisplit } from "../core/storage";
+import { getTrisplit, saveTrisplit } from "../core/storage";
 import { TrisplitContext } from "../core/trisplitContext";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { BalanceTable } from "../subcomponents/BalanceTable.component";
@@ -12,7 +14,7 @@ import { Trisplit } from "../vm/vm";
 export const DetailScene: React.FC = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const {trisplit, setTrisplit} = React.useContext(TrisplitContext);
+	const { trisplit, setTrisplit } = React.useContext(TrisplitContext);
 
 	React.useEffect(() => {
 		const newTrisplit = getTrisplit(Number(id));
@@ -23,23 +25,27 @@ export const DetailScene: React.FC = () => {
 		}
 	}, [id]);
 
-	return (
-			<LayoutToolbar>
-				{trisplit && (
-					<Grid container flexDirection="column" justifyContent={"center"} sx={{ p: 2 }}>
-						<p>
-							{trisplit.name.toString()}{" "}
-							<i>{new Date(trisplit.dateCreated).toLocaleDateString()}</i>
-						</p>
-						<span>{trisplit.description.toString()}</span>
-						<p>Members: {trisplit.members.map((member) => member.name).join(", ")}</p>
-						<p>Expenses: {trisplit.expenses.map((expense) => expense.amount).join(", ")}</p>
+	React.useEffect(() => {
+		if (trisplit.id === Number(id)) {
+			saveTrisplit(trisplit);
+		}
+	}, [trisplit.expenses, trisplit.members]);
 
-						<ExpensesTable/>
-						<BalanceTable/>
-						<MembersTable/>
-					</Grid>
-				)}
-			</LayoutToolbar>
+	return (
+		<LayoutToolbar>
+			{trisplit && (
+				<Grid container flexDirection="column" justifyContent={"center"} sx={{ p: 2 }}>
+					<p>
+						{trisplit.name.toString()}{" "}
+						<i>{new Date(trisplit.dateCreated).toLocaleDateString()}</i>
+					</p>
+					<span>{trisplit.description.toString()}</span>
+
+					<ExpensesTable />
+					<BalanceTable />
+					<MembersTable />
+				</Grid>
+			)}
+		</LayoutToolbar>
 	);
 };
