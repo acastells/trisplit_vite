@@ -16,7 +16,7 @@ import {
 	TextField,
 } from "@mui/material";
 import React from "react";
-import { TrisplitContext } from "../core/trisplitContext";
+import { TrisplitContext } from "../../core/providers/trisplitContext.component";
 
 const getInitialNewExpense = (members: Member[]) => {
 	return {

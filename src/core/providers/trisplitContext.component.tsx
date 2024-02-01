@@ -1,13 +1,7 @@
-import { getEmptyTrisplit } from "../vm/intialData";
-import { Expense, Member, Trisplit } from "../vm/vm";
-import React, { Dispatch, PropsWithChildren, SetStateAction, createContext } from "react";
-
-interface TrisplitContextEntity {
-	trisplit: Trisplit;
-	setTrisplit: Dispatch<SetStateAction<Trisplit>>;
-	setMembers: (members: Member[]) => void;
-	setExpenses: (expenses: Expense[]) => void;
-}
+import React, { PropsWithChildren, createContext } from "react";
+import { TrisplitContextEntity } from "./trisplitContext.vm";
+import { getEmptyTrisplit } from "@/vm/intialData";
+import { Trisplit, Member, Expense } from "@/vm/vm";
 
 export const TrisplitContext = createContext<TrisplitContextEntity>({} as TrisplitContextEntity);
 
@@ -21,8 +15,7 @@ export const TrisplitContextProvider: React.FC<PropsWithChildren> = ({ children 
 	};
 
 	return (
-		<TrisplitContext.Provider
-			value={{ trisplit, setTrisplit, setMembers, setExpenses }}>
+		<TrisplitContext.Provider value={{ trisplit, setTrisplit, setMembers, setExpenses }}>
 			{children}
 		</TrisplitContext.Provider>
 	);

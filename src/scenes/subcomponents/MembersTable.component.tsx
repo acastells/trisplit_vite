@@ -10,8 +10,8 @@ import {
 	TextField,
 } from "@mui/material";
 import React from "react";
-import { TrisplitContext } from "../core/trisplitContext";
-import { Member } from "../vm/vm";
+import { TrisplitContext } from "../../core/providers/trisplitContext.component";
+import { Member } from "../../vm/vm";
 
 export const MembersTable = () => {
 	const { trisplit, setMembers } = React.useContext(TrisplitContext);

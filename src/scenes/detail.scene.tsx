@@ -1,15 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { Grid } from "@mui/material";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTrisplit, saveTrisplit } from "../core/storage";
-import { TrisplitContext } from "../core/trisplitContext";
+import { TrisplitContext } from "../core/providers/trisplitContext.component";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
-import { BalanceTable } from "../subcomponents/BalanceTable.component";
-import { ExpensesTable } from "../subcomponents/ExpensesTable.component";
-import { MembersTable } from "../subcomponents/MembersTable.component";
-import { Trisplit } from "../vm/vm";
+import { ExpensesTable, BalanceTable, MembersTable } from "./subcomponents";
+import { getTrisplit, saveTrisplit } from "@/core/storage/storage";
+import { Trisplit } from "@/vm/vm";
 
 export const DetailScene: React.FC = () => {
 	const { id } = useParams();

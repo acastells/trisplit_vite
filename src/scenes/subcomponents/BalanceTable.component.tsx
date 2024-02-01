@@ -1,7 +1,7 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from "@mui/material";
 import React from "react";
-import { TrisplitContext } from "../core/trisplitContext";
-import { calculateBalancedTransactions } from "../utils";
+import { TrisplitContext } from "../../core/providers/trisplitContext.component";
+import { calculateBalancedTransactions } from "../../utils";
 import { Balance } from "@/vm/vm";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
