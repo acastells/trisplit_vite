@@ -58,7 +58,7 @@ export const MembersTable = () => {
 								</Grid>
 							</TableCell>
 						</TableRow>
-						{trisplit.members.map((row) => (
+						{trisplit.members.map((row: Member) => (
 							<TableRow key={row.id}>
 								<TableCell>{row.name}</TableCell>
 							</TableRow>

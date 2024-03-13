@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, createContext } from "react";
 import { TrisplitContextEntity } from "./trisplitContext.vm";
-import { getEmptyTrisplit } from "@/vm/intialData";
 import { Trisplit, Member, Expense } from "@/vm/vm";
+import { getEmptyTrisplit } from "../../vm/intialData";
 
 export const TrisplitContext = createContext<TrisplitContextEntity>({} as TrisplitContextEntity);
 

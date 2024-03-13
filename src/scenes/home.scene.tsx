@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
-import { getTrisplitsCount } from "../core/storage";
+import { getTrisplitsCount } from "../core/storage/storage";
 
 export const HomeScene: React.FC = () => {
 	return (

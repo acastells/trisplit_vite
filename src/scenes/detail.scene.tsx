@@ -3,9 +3,9 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { ExpensesTable, BalanceTable, MembersTable } from "./subcomponents";
-import { getTrisplit, saveTrisplit } from "@/core/storage/storage";
-import { Trisplit } from "@/vm/vm";
-import { TrisplitContext } from "@/core/providers/trisplitContext.component";
+import { getTrisplit, saveTrisplit } from "../core/storage/storage";
+import { Trisplit } from "../vm/vm";
+import { TrisplitContext } from "../core/providers/trisplitContext.component";
 
 export const DetailScene: React.FC = () => {
 	const { id } = useParams();

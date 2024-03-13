@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { switchRoutes } from "./routes";
-import { HomeScene, CreateScene, ListScene, DetailScene } from "@/scenes";
+import { HomeScene, CreateScene, ListScene, DetailScene } from "../../scenes";
 import { TrisplitContextProvider } from "../providers/trisplitContext.component";
 
 export const AppRouter: React.FC = () => {

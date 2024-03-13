@@ -1,3 +1,4 @@
+import { getTrisplit, removeTrisplit } from "../core/storage/storage";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
 	Button,
@@ -14,7 +15,6 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { getTrisplit, removeTrisplit } from "../core/storage";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { Trisplit } from "../vm/vm";
 

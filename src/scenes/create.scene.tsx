@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { saveTrisplit } from "../core/storage";
+import { saveTrisplit } from "../core/storage/storage";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { getEmptyTrisplit } from "../vm/intialData";
 import { Member, Trisplit } from "../vm/vm";
@@ -70,7 +70,6 @@ export const CreateScene: React.FC = () => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-
 							<TableRow>
 								<TableCell>
 									<Grid container flexDirection={"column"}>
