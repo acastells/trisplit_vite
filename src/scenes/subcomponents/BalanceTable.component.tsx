@@ -17,10 +17,6 @@ export const BalanceTable = () => {
 		<>
 			{balance.length > 0 && (
 				<>
-					<p>
-						<b>Balance</b>
-					</p>
-
 					<TableContainer component={Paper}>
 						<Table>
 							<TableBody>

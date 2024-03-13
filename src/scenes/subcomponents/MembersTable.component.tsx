@@ -32,9 +32,6 @@ export const MembersTable = () => {
 
 	return (
 		<>
-			<p>
-				<b>Members</b>
-			</p>
 			<TableContainer component={Paper}>
 				<Table>
 					<TableBody>

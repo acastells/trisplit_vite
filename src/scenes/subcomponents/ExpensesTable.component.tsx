@@ -53,10 +53,6 @@ export const ExpensesTable = () => {
 
 	return (
 		<>
-			<p>
-				<b>Expenses</b>
-			</p>
-
 			<TableContainer component={Paper}>
 				<Table>
 					<TableBody>
