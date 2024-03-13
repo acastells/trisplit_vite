@@ -1,1 +1,5 @@
-https://trisplit.netlify.app/
+# https://trisplit.netlify.app/
+
+## TODO
+
+add server_json
