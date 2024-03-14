@@ -4,7 +4,7 @@
   "description": "Trisplit API",
   "main": "index.js",
   "scripts": {
-    "mock-server": "json-server --routes ./config/routes.json --watch mock-data/trisplits-data.json --middlewares ./config/trisplit.middleware.js"
+    "start": "json-server --routes ./config/routes.json --watch mock-data/trisplits-data.json --middlewares ./config/trisplit.middleware.js --static ./public"
   },
   "author": "Lemoncode",
   "license": "MIT",
