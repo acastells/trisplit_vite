@@ -1,65 +1,26 @@
 import { Trisplit } from "@/vm/vm";
+import axios from "axios";
 
-export const getTrisplit = (id?: number): Trisplit | Trisplit[] | null => {
-	const trisplits_str = localStorage.getItem("trisplits");
-	if (!trisplits_str) {
-		return id ? null : [];
-	}
+const url = "http://localhost:3000/api/trisplit"
 
-	const trisplits_arr: Trisplit[] = JSON.parse(trisplits_str);
-	if (typeof id === "number") {
-		const result = trisplits_arr.find((item) => item.id === id);
-		if (result) {
-			return result;
-		} else {
-			return null;
-		}
-	} else {
-		return trisplits_arr;
-	}
+export const getTrisplits = async (): Promise<Trisplit[]> => {
+	const trisplits = await axios.get(url)
+	return trisplits.data as Trisplit[]
+}
+
+export const getTrisplitById = async (id: number): Promise<Trisplit | null> => {
+	const trisplit = await axios.get(`${url}/${id}`)
+	return trisplit.data as Trisplit
+}
+
+export const removeTrisplit = async (id: number) => {
+	axios.delete(`${url}/${id}`)
 };
 
-export const getTrisplitsCount = (): number => {
-	const trisplits = getTrisplit();
-	if (trisplits) {
-		return (trisplits as Trisplit[]).length;
-	} else {
-		return 0;
-	}
+export const createTrisplit = async (trisplit: Trisplit) => {
+	await axios.post(`${url}`, trisplit)
 };
 
-export const removeTrisplit = (id: number) => {
-	const trisplits_str = localStorage.getItem("trisplits");
-
-	if (!trisplits_str) {
-		return;
-	}
-
-	const trisplits_arr: Trisplit[] = JSON.parse(trisplits_str);
-	const index = trisplits_arr.findIndex((item) => item.id === id);
-
-	if (index !== -1) {
-		trisplits_arr.splice(index, 1);
-		localStorage.setItem("trisplits", JSON.stringify(trisplits_arr));
-	}
-};
-
-export const saveTrisplit = (trisplit: Trisplit) => {
-	const trisplits_str = localStorage.getItem("trisplits");
-	let trisplits_arr: Trisplit[] = [];
-
-	if (trisplits_str) {
-		trisplits_arr = JSON.parse(trisplits_str);
-		const existingIndex = trisplits_arr.findIndex((item) => item.id === trisplit.id);
-
-		if (existingIndex !== -1) {
-			trisplits_arr[existingIndex] = trisplit;
-		} else {
-			trisplits_arr.push(trisplit);
-		}
-	} else {
-		trisplits_arr.push(trisplit);
-	}
-
-	localStorage.setItem("trisplits", JSON.stringify(trisplits_arr));
+export const saveTrisplit = async (trisplit: Trisplit) => {
+	await axios.patch(`${url}/${trisplit.id}`, trisplit)
 };

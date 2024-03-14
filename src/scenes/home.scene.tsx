@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { getTrisplit, removeTrisplit } from "../core/storage/storage";
+import { getTrisplits, removeTrisplit } from "../core/storage/storage";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 
 export const HomeScene: React.FC = () => {
@@ -26,20 +26,22 @@ export const HomeScene: React.FC = () => {
 	const [itemIdToDelete, setItemIdToDelete] = React.useState<number | null>();
 
 	React.useEffect(() => {
-		const newTrisplits = getTrisplit();
-		if (newTrisplits) {
-			setTrisplits(newTrisplits as Trisplit[]);
-		}
+		loadTrisplits()
 	}, []);
+
+	const loadTrisplits = async () => {
+		const newTrisplits = await getTrisplits();
+		setTrisplits(newTrisplits)
+	}
 
 	const handleDelete = (id: number) => {
 		setItemIdToDelete(id);
 		setDeleteConfirmationOpen(true);
 	};
 
-	const confirmDelete = () => {
+	const confirmDelete = async () => {
 		if (itemIdToDelete) {
-			removeTrisplit(itemIdToDelete);
+			await removeTrisplit(itemIdToDelete);
 			setTrisplits((prevTrisplits) =>
 				(prevTrisplits as Trisplit[]).filter((item) => item.id !== itemIdToDelete)
 			);

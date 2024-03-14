@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { saveTrisplit } from "../core/storage/storage";
+import { createTrisplit } from "../core/storage/storage";
 import { LayoutToolbar } from "../layouts/LayoutToolbar";
 import { getEmptyTrisplit } from "../vm/intialData";
 import { Member, Trisplit } from "../vm/vm";
@@ -38,9 +38,9 @@ export const CreateScene: React.FC = () => {
 		setNewMember({ id: Date.now(), name: "" });
 	};
 
-	const handleCreateButton = () => {
+	const handleCreateButton = async () => {
 		const trisplitToSave = { ...newTrisplit, members: members };
-		saveTrisplit(trisplitToSave);
+		await createTrisplit(trisplitToSave);
 		navigate("/" + newTrisplit.id.toString());
 	};
 
