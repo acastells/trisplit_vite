@@ -1,7 +1,7 @@
 import { Trisplit } from "@/vm/vm";
 import axios from "axios";
 
-const url = "http://localhost:3000/api/trisplit"
+const url = "/api/trisplit"
 
 export const getTrisplits = async (): Promise<Trisplit[]> => {
 	const trisplits = await axios.get(url)
